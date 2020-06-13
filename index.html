@@ -1,22 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <title>JavaScript Quiz</title>
 </head>
+
 <body>
-  <div id="highscores"></div> <!-- Link to view high scores. (Maybe this could be a button, too?) -->
+  <header>
+    <div id="highscores-div">
+      <button id="highscores-btn">View High Scores</button>
+    </div>
 
-  <div id="timer"></div>
+
+    <div id="timer-div">
+      <p id="timer"></p>
+    </div>
+  </header>
+
+  <main>
+    <section id="intro-section" class="intro-section">
+      <h1 class="title">Coding Quiz Challenge</h1>
+      <h2>Try to answer the following code-related questions within the time limit.<br>
+        Keep in mind that incorrect answers will reduce your remaining time by <i>10 seconds</i>.<br>
+        Good luck!
+      </h2>
+      <button id="start-btn">Begin</button>
+    </section>
 
 
-  <h2 id="question"></h1>
-  <button id="answer1"></button>
-  <button id="answer2"></button>
-  <button id="answer3"></button>
-  <button id="answer4"></button>
-  
+    <section id="quiz-content">
+      <h2 id="question">Example text</h2>
+      <button id="answer1">Example Answer</button>
+      <button id="answer2">Example Answer</button>
+      <button id="answer3">Example Answer</button>
+      <button id="answer4">Example Answer</button>
+    </section>
+
+  </main>
+
   <script src="assets/script.js"></script>
 </body>
+
 </html>

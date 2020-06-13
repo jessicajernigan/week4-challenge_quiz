@@ -1,3 +1,47 @@
+var startBtn = document.querySelector("#start-btn");
+
+
+
+// The array of questions for our quiz game.
+var questions = [
+  { q: "What is the best animal?", a: "Wolves", a: "Dogs", a: "Bears", a: "Trick question; all of the above" },
+  { q: "What is the minimum amount of sleep required by 99.9999% of the human population?", a: "7+ hours", a: "6 hours", a: "5 hours", a: "4 hours" },
+];
+
+
+// COUNTDOWN TIMER FUNCTION
+function quizTimer() {
+  var timeLeft = 10;
+  var timeInterval = setInterval(function () {
+    timer.textContent = timeLeft + " seconds remaining";
+    timeLeft--;
+
+    if (timeLeft === -1) {
+      timer.textContent = "";
+      clearInterval(timeInterval);
+    }
+  }, 1000);
+  
+  document.getElementById("intro-section").style.display = "none";
+  quizQuestions()
+}
+
+// INITIATES THE FIRST QUESTION.
+function quizQuestions() {
+  document.getElementById("quiz-content").style.display = "inline-block";
+}
+
+
+
+startBtn.addEventListener("click", quizTimer); // Removes introductory text and starts the timer.
+
+
+
+
+
+
+
+
 // User Story
 // AS A coding boot camp student
 // I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
@@ -17,36 +61,3 @@
 // WHEN the game is over
 // THEN I can save my initials and score
 
-
-///       // The array of questions for our quiz game.
-var questions = [
-  { q: 'The sky is blue.', a: 't' },
-  { q: 'There are 365 days in a year.', a: 't' },
-  { q: 'There are 42 ounces in a pound.', a: 'f' },
-  { q: 'The Declaration of Independence was created in 1745.', a: 'f' },
-  { q: 'Bananas are vegetables.', a: 'f' },
-];
-
-// We start the game with a score of 0. (Won't need this probably.)
-var score = 0;
-
-// Loop over every question object
-for (var i = 0; i < questions.length; i++) {
-  // Display current question to user and ask OK/Cancel
-  var answer = confirm(questions[i].q);
-
-  // Compare answers
-  if (
-    (answer === true && questions[i].a === 't') ||
-    (answer === false && questions[i].a === 'f')
-  ) {
-    // Increase score // Change this to decrease time.
-    score++;
-    alert('Correct!'); // Push these to a <div> in the page instead of an alert.
-  } else {
-    alert('Wrong!'); // Push these to a <div> in the page instead of an alert.
-  }
-}
-
-// Show total at end
-alert('You got ' + score + '/' + questions.length);
