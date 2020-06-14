@@ -2,6 +2,8 @@ var startBtn = document.querySelector("#start-btn");
 var viewHighScoresBtn = document.querySelector("#highscores-btn");
 var index = 0;
 var score = 0;
+var timeLeft = 20;
+var totalQuestions = 2;
 
 // The array of questions for our quiz game.
 var questions = [
@@ -26,7 +28,6 @@ var questions = [
 
 // COUNTDOWN TIMER FUNCTION
 function quizTimer() {
-  var timeLeft = 20;
   var timeInterval = setInterval(function () {
     timeLeft--;
     timer.textContent = timeLeft + " seconds remaining";
@@ -64,10 +65,21 @@ function quizQuestions(index) {
 
   var answerCheck = function (e) {
     if (e.target.textContent == questions[index][questions[index].correct]) {
-      quizQuestions(index + 1);
-    } else {
+      if (!(index >= questions.length - 1)) {
+        quizQuestions(index + 1)
+      } else {
+        showInputContainer();
+      }
+    }
+
+    else {
       // subtract ten and assign the new value to the timer variable
-      timer -= 10;
+      timeLeft -= 10
+      if (!(index >= questions.length - 1)) {
+        quizQuestions(index + 1)
+      } else {
+        showInputContainer();
+      }
     }
 
     for (var i = 0; i < btns.length; i++) {
@@ -78,17 +90,24 @@ function quizQuestions(index) {
   for (var i = 0; i < btns.length; i++) {
     btns[i].addEventListener("click", answerCheck);
   }
-}
+
+};
 
 function showInputContainer() {
   document.getElementById("input-container").style.display = "inline-block";
-}
+  document.getElementById("leaderboard").style.display = "none";
+  document.getElementById("intro-section").style.display = "none";
+  document.getElementById("quiz-content").style.display = "none";
+  document.getElementById("timer-div").style.display = "none";
+};
 
 function showLeaderboard() {
   document.getElementById("leaderboard").style.display = "inline-block";
   document.getElementById("intro-section").style.display = "none";
   document.getElementById("input-container").style.display = "none";
-}
+  document.getElementById("quiz-content").style.display = "none";
+  document.getElementById("timer-div").style.display = "none";
+};
 
 // 1. Check for incorrect answer, then subtract time from 'timer'
 // 2. Stop quiz, go to form input (to get initials)
