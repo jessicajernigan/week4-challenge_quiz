@@ -1,52 +1,94 @@
 var startBtn = document.querySelector("#start-btn");
-
+var viewHighScoresBtn = document.querySelector("#highscores-btn")
+var index = 0;
+var score = 0;
 
 
 // The array of questions for our quiz game.
 var questions = [
-  { q: "What is the best animal?", a1: "Wolves", a2: "Dogs", a3: "Bears", a4: "Trick question; all of the above" },
-  { q: "What is the minimum amount of sleep required by 99.9999% of the human population?", a1: "7+ hours", a2: "6 hours", a3: "5 hours", a4: "4 hours" },
+  { q: "Which pet is the best?", a1: "Baasha", a2: "Cooper", a3: "Fred", a4: "Trick question; all of the above.", correct: "a4" },
+  { q: "What is the minimum amount of sleep required by 99.9999% of the human population?", a1: "7+ hours", a2: "6 hours", a3: "5 hours", a4: "4 hours", correct: "a1"},
 ];
 
 
 // COUNTDOWN TIMER FUNCTION
 function quizTimer() {
-  var timeLeft = 10;
+  var timeLeft = 20;
   var timeInterval = setInterval(function () {
     timer.textContent = timeLeft + " seconds remaining";
     timeLeft--;
 
     if (timeLeft === -1) {
       timer.textContent = "";
-      clearInterval(timeInterval);
+      clearInterval(timeInterval)
+      // Call function that 1.) hides questions 2.) displays score + input field requesting initials 
     }
   }, 1000);
 
   document.getElementById("intro-section").style.display = "none";
-  quizQuestions();
-}
+  quizQuestions(index);
+};
 
 // INITIATES THE FIRST QUESTION.
-function quizQuestions() {
+function quizQuestions(index) {
   document.getElementById("quiz-content").style.display = "inline-block";
-  
     var q = document.getElementById("question");
-    q.innerHTML = questions.q;
+    q.textContent = questions[index].q;
+
     var answer1 = document.getElementById("answer1");
-    answer1.innerHTML = questions.a1;
+    answer1.textContent = questions[index].a1;
+
     var answer2 = document.getElementById("answer2");
-    answer2.innerHTML = questions.a2;
+    answer2.textContent = questions[index].a2;
+
     var answer3 = document.getElementById("answer3");
-    answer3.innerHTML = questions.a3;
+    answer3.textContent = questions[index].a3;
+    
     var answer4 = document.getElementById("answer4");
-    answer4.innerHTML = questions.a4;
+    answer4.textContent = questions[index].a4;
   
+    var btns = [answer1, answer2, answer3, answer4];
+
+    var answerCheck = function (e) {
+      if (e.target.textContent = questions[index][questions[index].correct])
+      {
+        quizQuestions(index + 1);
+      }
+      else {
+        timer - 10
+      }
+
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].removeEventListener("click", answerCheck);
+      }
+    }
+
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", answerCheck);
+    }
+};
+
+
+function showInputContainer() {
+  document.getElementById("input-container").style.display = "inline-block";
+}
+
+function showLeaderboard() {
+  document.getElementById("leaderboard").style.display = "inline-block";
+  document.getElementById("intro-section").style.display = "none";
+  document.getElementById("input-container").style.display = "none";
 }
 
 
 
-startBtn.addEventListener("click", quizTimer); // Removes introductory text and starts the timer.
 
+
+// 1. Check for incorrect answer, then subtract time from 'timer'
+// 2. Stop quiz, go to form input (to get initials)
+// 3. Submission populates high scores (localStorage)
+
+startBtn.addEventListener("click", quizTimer); // Removes introductory text and starts the timer.
+viewHighScoresBtn.addEventListener("click", showLeaderboard)
 
 
 

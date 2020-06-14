@@ -23,9 +23,13 @@
   <main>
     <section id="intro-section" class="intro-section">
       <h1 class="title">Coding Quiz Challenge</h1>
-      <h2>Try to answer the following code-related questions within the time limit.<br>
-        Keep in mind that incorrect answers will reduce your remaining time by <i>10 seconds</i>.<br>
-        Good luck!
+      <br><br>
+      <h2>Try to answer the following code-related questions within the time limit.
+        <br>
+        <br>
+        Keep in mind that incorrect answers will reduce your remaining time by <i>10 seconds</i>.
+        <br>
+        <span>Good luck!</span>
       </h2>
       <button id="start-btn">Begin</button>
     </section>
@@ -48,7 +52,7 @@
       </div>
     </section>
 
-    <section class="submit-score-section">
+    <section id="input-container" class="submit-score-section">
       <form id="submit-form">
         <label id="initials-label">Save your score!</label>
         <input type="text" id="initials-field" placeholder="Add your initials." />
@@ -57,8 +61,17 @@
     </section>
 
     <section id="leaderboard" class="leaderboard-container">
-      
-
+      <h1>High Scores</h1>
+      <ul class="score-list">
+        <li id="highscore" class="score-list-item">
+          <div id="initial1" class="initials">Example Text</div>
+          <div id="score1" class="score">5</div>
+        </li>
+        <li id="highscore" class="score-list-item">
+          <div id="initial2" class="initials">Example Text</div>
+          <div id="score2" class="score">5</div>
+        </li>
+      </ul>
 
     </section>
 
