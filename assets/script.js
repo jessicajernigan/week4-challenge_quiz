@@ -4,8 +4,8 @@ var startBtn = document.querySelector("#start-btn");
 
 // The array of questions for our quiz game.
 var questions = [
-  { q: "What is the best animal?", a: "Wolves", a: "Dogs", a: "Bears", a: "Trick question; all of the above" },
-  { q: "What is the minimum amount of sleep required by 99.9999% of the human population?", a: "7+ hours", a: "6 hours", a: "5 hours", a: "4 hours" },
+  { q: "What is the best animal?", a1: "Wolves", a2: "Dogs", a3: "Bears", a4: "Trick question; all of the above" },
+  { q: "What is the minimum amount of sleep required by 99.9999% of the human population?", a1: "7+ hours", a2: "6 hours", a3: "5 hours", a4: "4 hours" },
 ];
 
 
@@ -21,14 +21,26 @@ function quizTimer() {
       clearInterval(timeInterval);
     }
   }, 1000);
-  
+
   document.getElementById("intro-section").style.display = "none";
-  quizQuestions()
+  quizQuestions();
 }
 
 // INITIATES THE FIRST QUESTION.
 function quizQuestions() {
   document.getElementById("quiz-content").style.display = "inline-block";
+  
+    var q = document.getElementById("question");
+    q.innerHTML = questions.q;
+    var answer1 = document.getElementById("answer1");
+    answer1.innerHTML = questions.a1;
+    var answer2 = document.getElementById("answer2");
+    answer2.innerHTML = questions.a2;
+    var answer3 = document.getElementById("answer3");
+    answer3.innerHTML = questions.a3;
+    var answer4 = document.getElementById("answer4");
+    answer4.innerHTML = questions.a4;
+  
 }
 
 

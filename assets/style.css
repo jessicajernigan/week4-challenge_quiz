@@ -1,7 +1,24 @@
+/* Reset CSS */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 header {
   padding: 20px 35px;
   display: flex;
   justify-content: space-between;
+}
+
+body {
+  background-color: #d6dbdc;
+  font-size: 16px;
+}
+
+main {
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #timer-div {
@@ -14,6 +31,60 @@ header {
 #highscores-div {
   float: left;
   padding: 20px 0;
+}
+
+
+.intro-section {
+  margin-top: 50px;
+  margin: auto;
+  width: 60%;
+  padding: 10px;
+}
+
+.intro-section h2 {
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 18px;
+  line-height: 3em;
+}
+
+.button-block {
+  display: flex;
+  flex-direction: column;
+}
+
+#quiz-content {
+  display: none;
+}
+
+.submit-score-section {
+  display: none;
+}
+
+#initials-field {
+  padding: 15px;
+  border: darkgray;
+  border-radius: 5px;
+  margin-left: 20px;
+  margin-right: 10px;
+}
+
+
+/* BUTTON STYLES */
+#submit-btn {
+  margin: 10px;
+  background-color: #4c8caf;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10%;
+  text-shadow: 1px 1px 1px black;
 }
 
 #highscores-btn {
@@ -48,33 +119,18 @@ header {
   text-shadow: 1px 1px 1px black;
 }
 
-
-main {
+.answer-btn {
+  margin: 10px;
+  background-color: #4c8caf;
+  border: none;
+  color: white;
+  padding: 15px 32px;
   text-align: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10%;
+  text-shadow: 1px 1px 1px black;
 }
-
-.intro-section {
-  margin-top: 50px;
-  margin: auto;
-  width: 60%;
-  padding: 10px;
-}
-
-.intro-section h2 {
-  text-align: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 18px
-}
-
-
-#quiz-content {
-  display: none;
-}
-
-
-
-
-
-
-
