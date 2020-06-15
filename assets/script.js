@@ -1,11 +1,12 @@
 var startBtn = document.querySelector("#start-btn");
+var startBtn2 = document.querySelector("#start-btn2");
 var viewHighScoresBtn = document.querySelector("#highscores-btn");
 var index = 0;
 var score = 0;
 var timeLeft = 60;
 var totalQuestions = 2;
 var inputField = document.querySelector("#initials-field");
-var submitBtn = document.querySelector("#sign-up");
+var submitBtn = document.querySelector("#submit-btn");
 
 // The array of questions for our quiz game.
 var questions = [
@@ -20,7 +21,7 @@ var questions = [
   {
     q:
       "What does a plus sign (+) do?",
-    a1: "Contatenate strings",
+    a1: "Concatenate strings",
     a2: "Produce sums",
     a3: "Concatenate strings or produce sums, depending on the context.",
     a4: "Trick question! Plus signs are never used in JavaScript.",
@@ -57,6 +58,8 @@ var questions = [
 
 // COUNTDOWN TIMER FUNCTION
 function quizTimer() {
+  document.getElementById("no-scores").style.display = "none";
+  document.getElementById("leaderboard").style.display = "none";
   var timeInterval = setInterval(function () {
     timeLeft--;
     timer.textContent = timeLeft + " seconds remaining";
@@ -64,6 +67,7 @@ function quizTimer() {
     if (timeLeft <= 0) {
       timer.textContent = "";
       clearInterval(timeInterval);
+      showInputContainer();
       // Call function that 1.) hides questions 2.) displays score + input field requesting initials
     }
   }, 1000);
@@ -116,16 +120,13 @@ function quizQuestions(index) {
         showInputContainer();
       }
     }
-
     for (var i = 0; i < btns.length; i++) {
       btns[i].removeEventListener("click", answerCheck);
     }
   };
-
   for (var i = 0; i < btns.length; i++) {
     btns[i].addEventListener("click", answerCheck);
   }
-
 };
 
 function showInputContainer() {
@@ -145,29 +146,50 @@ function showInputContainer() {
 
 
 
-function showLeaderboard() {
+function showLeaderboard(initials) {
   document.getElementById("leaderboard").style.display = "inline-block";
+  document.getElementById("leaderboard-scores").style.display = "inline-block";
   document.getElementById("intro-section").style.display = "none";
   document.getElementById("input-container").style.display = "none";
   document.getElementById("quiz-content").style.display = "none";
   document.getElementById("timer-div").style.display = "none";
+  document.getElementById("no-scores").style.display = "none";
+
+  var initials = localStorage.getItem("initials");
+  var score = localStorage.getItem("score");
+
+  var initialsField = document.getElementById("initial1");
+  var scoreField = document.getElementById("score1");
+
+  initialsField.textContent = initials;
+  scoreField.textContent = score;
+
+  if (initials == null || score == null) {
+    document.getElementById("leaderboard-scores").style.display = "none";
+    document.getElementById("no-scores").style.display = "inline-block";
+  }
+  // console.log(initials);
+  // console.log(score);
 };
 
 
+
 viewHighScoresBtn.addEventListener("click", showLeaderboard);
-startBtn.addEventListener("click", quizTimer); // Removes introductory text and starts the timer.
+
+startBtn.addEventListener("click", quizTimer);
+startBtn2.addEventListener("click", quizTimer);
+
+
 submitBtn.addEventListener("click", function (event) {
   event.preventDefault()
   var initials = document.querySelector("#initials-field").value;
-  
-  if (initials === "") {
-    displayMessage("error", "Please enter your initials.");
-  } else {
-    localStorage.setItem("initials", initials);
-    showLeaderboard();
-  }
-
+  localStorage.setItem("initials", initials);
+  localStorage.setItem("score", score);
+  showLeaderboard();
 });
+
+
+
 
 // User Story
 // AS A coding boot camp student

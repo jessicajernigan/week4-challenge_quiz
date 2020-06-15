@@ -88,9 +88,14 @@ main {
   display: none;
 }
 
+.leaderboard-container h1 {
+  font-size: 50px;
+  line-height: 1.5em;
+}
+
 .score-list {
   list-style: none;
-  text-align: left;
+  text-align: center;
 }
 
 .score-list-item {
@@ -98,7 +103,7 @@ main {
 }
 
 .initials, .score {
-  padding: 15px;
+  padding: 15px 25px 15px 25px;
   margin: 5px;
   background-color: rgb(90, 165, 90);
   border-radius: 16px;
@@ -106,9 +111,13 @@ main {
   border-width: 3px;
   border-color: darkcyan;
   color: white;
-  font-size: 20px;
+  font-size: 30px;
+  width: 100%;
 }
 
+.no-scores {
+  display: none;
+}
 
 
 /* BUTTON STYLES */
@@ -144,7 +153,7 @@ main {
   text-shadow: 1px 1px 1px black;
 }
 
-#start-btn {
+#start-btn, #start-btn2, #start-btn3 {
   margin: 20px;
   background-color: #4c8caf;
   border: none;
