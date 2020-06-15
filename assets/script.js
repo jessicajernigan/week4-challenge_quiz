@@ -1,5 +1,4 @@
 var startBtn = document.querySelector("#start-btn");
-var startBtn2 = document.querySelector("#start-btn2");
 var viewHighScoresBtn = document.querySelector("#highscores-btn");
 var index = 0;
 var score = 0;
@@ -178,8 +177,6 @@ function showLeaderboard(initials) {
 viewHighScoresBtn.addEventListener("click", showLeaderboard);
 
 startBtn.addEventListener("click", quizTimer);
-startBtn2.addEventListener("click", quizTimer);
-
 
 submitBtn.addEventListener("click", function (event) {
   event.preventDefault()
