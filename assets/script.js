@@ -149,6 +149,7 @@ function showInputContainer() {
 function showLeaderboard(initials) {
   document.getElementById("leaderboard").style.display = "inline-block";
   document.getElementById("leaderboard-scores").style.display = "inline-block";
+  document.getElementById("highscores-div").style.display = "none";
   document.getElementById("intro-section").style.display = "none";
   document.getElementById("input-container").style.display = "none";
   document.getElementById("quiz-content").style.display = "none";
