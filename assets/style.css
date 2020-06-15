@@ -1,4 +1,5 @@
 /* Reset CSS */
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -32,7 +33,6 @@ main {
   float: left;
   padding: 20px 0;
 }
-
 
 .intro-section {
   margin-top: 50px;
@@ -78,8 +78,8 @@ main {
   margin-right: 10px;
 }
 
-
 /* LEADERBOARD STYLES */
+
 .leaderboard-container {
   margin-top: 50px;
   margin: auto;
@@ -107,7 +107,7 @@ main {
   margin: 5px;
   background-color: rgb(90, 165, 90);
   border-radius: 16px;
-  border-style: double; 
+  border-style: double;
   border-width: 3px;
   border-color: darkcyan;
   color: white;
@@ -119,8 +119,8 @@ main {
   display: none;
 }
 
-
 /* BUTTON STYLES */
+
 #submit-btn {
   margin: 10px;
   background-color: #4c8caf;
